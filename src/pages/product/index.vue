@@ -20,6 +20,7 @@
 </template>
 
 <script setup>
+console.log(111);
 // import axios from "axios";
 // const { data } = await useFetch("https://dummyjson.com/products");
 // console.log(data.value);

@@ -8,7 +8,7 @@ export default defineConfig((env) => {
       noExternal: /./,
     },
     resolve: {
-      // necessary because vue.ssrUtils is only exported on cjs modules
+      // 必要設定，因為 vue.ssrUtils 僅在 cjs 模組上導出
       alias: [
         {
           find: '@vue/runtime-dom',

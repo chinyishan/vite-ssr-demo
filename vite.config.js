@@ -10,8 +10,8 @@ const nestedVirtualId = '\0' + nestedVirtualFile
 
 const base = '/test/'
 
-// preserve this to test loading __filename & __dirname in ESM as Vite polyfills them.
-// if Vite incorrectly load this file, node.js would error out.
+// 保留它以測試加載 __filename 和 __dirname，在 ESM 中，Vite 填充了它們。
+// 如果 Vite 錯誤載入該文件，node.js 會出錯。
 globalThis.__vite_test_filename = __filename
 globalThis.__vite_test_dirname = __dirname
 
@@ -30,7 +30,7 @@ export default defineConfig(({ command, ssrBuild }) => ({
       load(id, options) {
         const ssrFromOptions = options?.ssr ?? false
         if (id === '@foo') {
-          // Force a mismatch error if ssrBuild is different from ssrFromOptions
+          // 如果 ssrBuild 與 ssrFromOptions 不同，則強制出現不符錯誤
           return `export default { msg: '${
             command === 'build' && !!ssrBuild !== ssrFromOptions
               ? `defineConfig ssrBuild !== ssr from load options`
