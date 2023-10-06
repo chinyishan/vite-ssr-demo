@@ -1,5 +1,7 @@
 // 創建 Vue Router 實例和配置路由的歷史模式。
-import { createRouter as _createRouter, createMemoryHistory, createWebHistory } from 'vue-router'
+import { createRouter as _createRouter, createMemoryHistory, createWebHistor } from 'vue-router'
+// import { createRouter, createWebHistory } from "vue-router";
+// import routes from '~pages'
 
 // 使用 Vite 的 import.meta.glob 函數動態導入 ./pages 下的所有 .vue 自動產生路由
 // https://vitejs.dev/guide/features.html#glob-import
@@ -29,3 +31,11 @@ export function createRouter() {
     routes,
   })
 }
+
+// export const routes = setupLayouts(generatedRoutes)
+// console.log(routes)
+// const router = createRouter({
+//   history: createWebHistory(),
+//   routes,
+// })
+// export default router

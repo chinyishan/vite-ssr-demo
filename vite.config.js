@@ -2,6 +2,7 @@ import path from 'node:path'
 import { defineConfig } from 'vite'
 import vuePlugin from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
+// import Pages from 'vite-plugin-pages'
 
 const virtualFile = '@virtual-file'
 const virtualId = '\0' + virtualFile
@@ -16,10 +17,26 @@ globalThis.__vite_test_filename = __filename
 globalThis.__vite_test_dirname = __dirname
 
 export default defineConfig(({ command, ssrBuild }) => ({
-  base,
+  // base,
   plugins: [
     vuePlugin(),
     vueJsx(),
+    
+    // Pages({
+    //   dirs: 'src/views',
+    //   exclude: ["**/components/*.vue"],
+    //   extendRoute(route, parent) {
+    //     if (route.path === "/") {
+    //       return route;
+    //     }
+    //     return {
+    //       ...route,
+    //       redirect: 'page1',
+    //       meta: { auth: true },
+    //     };
+    //   }
+    // }),
+
     {
       name: 'virtual',
       resolveId(id) {
@@ -76,14 +93,14 @@ export default defineConfig(({ command, ssrBuild }) => ({
             return id
           }
         },
-        load(id) {
-          if (id === virtualId) {
-            return {
-              code: `export const __ssr_vue_processAssetPath = (url) => '${base}' + url`,
-              moduleSideEffects: 'no-treeshake',
-            }
-          }
-        },
+        // load(id) {
+        //   if (id === virtualId) {
+        //     return {
+        //       code: `export const __ssr_vue_processAssetPath = (url) => '${base}' + url`,
+        //       moduleSideEffects: 'no-treeshake',
+        //     }
+        //   }
+        // },
         transform(code, id) {
           const cleanId = cleanUrl(id)
           if (
