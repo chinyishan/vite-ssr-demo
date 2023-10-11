@@ -1,5 +1,5 @@
 // 創建 Vue Router 實例和配置路由的歷史模式。
-import { createRouter as _createRouter, createMemoryHistory, createWebHistor } from 'vue-router'
+import { createRouter as _createRouter, createMemoryHistory, createWebHistory } from 'vue-router'
 // import { createRouter, createWebHistory } from "vue-router";
 // import routes from '~pages'
 
