@@ -17,21 +17,23 @@ globalThis.__vite_test_filename = __filename
 globalThis.__vite_test_dirname = __dirname
 
 export default defineConfig(({ command, ssrBuild }) => ({
-  // base,
+  base,
   plugins: [
     vuePlugin(),
     vueJsx(),
+    // Pages(),
     
     // Pages({
-    //   dirs: 'src/views',
+    //   dirs: 'src/pages',
     //   exclude: ["**/components/*.vue"],
     //   extendRoute(route, parent) {
     //     if (route.path === "/") {
+    //       console.log(route);
     //       return route;
     //     }
     //     return {
     //       ...route,
-    //       redirect: 'page1',
+    //       redirect: 'home',
     //       meta: { auth: true },
     //     };
     //   }
@@ -140,4 +142,9 @@ export default defineConfig(({ command, ssrBuild }) => ({
   optimizeDeps: {
     exclude: ['@vitejs/test-example-external-component'],
   },
+  resolve: {
+    alias: {
+      '@': '/src',
+    }
+  }
 }))

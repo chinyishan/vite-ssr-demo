@@ -1,8 +1,6 @@
 <template>
   <div>
-    <router-link to="/">Home</router-link>|
-    <router-link to="/about">About</router-link>|
-    <router-link to="/product">Product</router-link>
+    <Header />
     <router-view v-slot="{ Component }">
       <Suspense>
         <div>
@@ -13,7 +11,30 @@
   </div>
 </template>
 
+<script setup>
+import Header from './components/header/index.vue'
+
+</script>
+
 <style>
+* {
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  text-align: center;
+  padding: 20px;
+}
+img {
+  display: block;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+}
+a {
+  display: block;
+}
+
 @font-face {
   font-family: 'Inter';
   font-style: italic;
@@ -32,6 +53,6 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  /* margin-top: 60px; */
 }
 </style>

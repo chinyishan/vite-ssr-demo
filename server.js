@@ -72,7 +72,7 @@ export async function createServer(
     // 如果使用了自己的 express 路由（express.Router()），應該使用 router.use
     app.use(vite.middlewares)
   } else {
-    //如果處於生產環境，它將使用壓縮中間件和 serve-static 中間件來提供已經編譯完成的靜態資源（位於 dist/client 目錄下）。
+    //如果處於生產環境，它將使用 壓縮(compression)中間件 和 serve-static 中間件來提供已經編譯完成的靜態資源（位於 dist/client 目錄下）。
     app.use((await import('compression')).default())
     app.use(
       '/test/',
@@ -86,6 +86,7 @@ export async function createServer(
     try {
       // 設置一個路由，用於處理所有的請求。
       const url = req.originalUrl.replace('/test/', '/')
+      // const url = req.originalUrl
 
       // 1.讀取index.html
       let template, render

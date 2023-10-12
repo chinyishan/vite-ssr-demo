@@ -1,11 +1,11 @@
 <template>
   <div>
     <h1>商品列表</h1>
-    <!-- <div class="shop_list">
-      <div class="shop_col" v-for="item in data.products" :key="item.id">
-        <NuxtLink :to="`/product/${item.id}`" class="pic">
+    <div class="shop_list">
+      <div class="shop_col" v-for="item in productData" :key="item.id">
+        <router-link :to="`/product/${item.id}`" class="pic">
           <img :src="item.thumbnail" alt="pd" />
-        </NuxtLink>
+        </router-link>
         <h3 class="title">{{ item.title }}</h3>
         <div class="description">
           <p>{{ item.description }}</p>
@@ -14,16 +14,40 @@
           <strong>${{ item.price }}</strong>
         </div>
       </div>
-    </div> -->
-    <!-- {{ data }} -->
+      {{ productData }}
+    </div>
   </div>
 </template>
 
 <script setup>
-console.log(111);
-// import axios from "axios";
-// const { data } = await useFetch("https://dummyjson.com/products");
-// console.log(data.value);
+import { ref } from 'vue'
+import axios from "axios";
+
+// const productData = ref({})
+
+// const data = async() => {
+//   await axios.get("https://dummyjson.com/products").then((res) => {
+//     productData.value = res.data.products
+//     // console.log(res.data.products)
+//   })
+// }
+// data()
+
+const productData = await fetchData()
+
+async function fetchData() {
+  try {
+    const response = await axios.get("https://dummyjson.com/products");
+    console.log(response);
+    return response.data.products;
+  } catch (error) {
+    console.error("Failed to fetch data:", error);
+    return null;
+  }
+}
+
+
+// console.log(productData.value);
 
 // useSeoMeta({
 //   title: () => `商品列表-${data.value.limit}`,
@@ -53,9 +77,9 @@ console.log(111);
     display: flex;
     flex-direction: column;
     width: 24%;
-    padding: 15px;
-    margin: 10px;
-    background-color: #fffde9;
+    padding: 10px;
+    margin: 1%;
+    background-color: #f3f3f3;
 
     .pic {
       width: 100%;
@@ -86,8 +110,8 @@ console.log(111);
 @media screen and (max-width: 769px) {
   .shop_list {
     .shop_col {
-      width: 40%;
-      margin: 5px;
+      width: 36%;
+      margin: 1%;
     }
   }
 }

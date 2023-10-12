@@ -2,7 +2,7 @@
   <div>
     <h1>詳細商品</h1>
     <section>
-      <!-- <div class="product_row">
+      <div class="product_row">
         <div class="product_col pic">
           <img :src="data.thumbnail" alt="pd" />
         </div>
@@ -16,14 +16,17 @@
             <strong>${{ data.price }}</strong>
           </div>
         </div>
-      </div> -->
+      </div>
     </section>
   </div>
 </template>
 
 <script setup>
+import { useRoute } from "vue-router";
+
 const route = useRoute();
 console.log(route.params.id);
+console.log(route);
 
 // const { data } = await useFetch(
 //   `https://dummyjson.com/products/${route.params.id}`

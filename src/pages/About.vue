@@ -1,7 +1,9 @@
 <template>
-  <h1>{{ msg }}</h1>
-  <p class="import-meta-url">{{ url }}</p>
-  <Button>CommonButton</Button>
+  <div>
+    <h1>{{ msg }}</h1>
+    <p class="import-meta-url">{{ url }}</p>
+    <Button>CommonButton</Button>
+  </div>
 </template>
 
 <script>
@@ -23,7 +25,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 h1 {
   color: red;
 }

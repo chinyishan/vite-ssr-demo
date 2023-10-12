@@ -1,6 +1,7 @@
 import { createPinia } from 'pinia'
 import { createSSRApp } from 'vue'
 import App from './App.vue'
+// 引入 router 裡的 createRouter 函數
 import { createRouter } from './router'
 
 // SSR requires a fresh app instance per request, therefore we export a function

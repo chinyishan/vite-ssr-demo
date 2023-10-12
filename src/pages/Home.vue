@@ -1,22 +1,24 @@
 <template>
-  <h1>Home</h1>
-  <p>
-    <img src="../assets/logo.png" alt="logo" />
-  </p>
-  <button @click="state.count++">count is: {{ state.count }}</button>
-  <Foo />
-  <p class="virtual">msg from virtual module: {{ foo.msg }}</p>
-  <p class="inter">this will be styled with a font-face</p>
-  <p class="import-meta-url">{{ state.url }}</p>
-  <p class="protocol">{{ state.protocol }}</p>
-  <p class="nested-virtual">msg from nested virtual module: {{ virtualMsg }}</p>
-  <Button>CommonButton</Button>
   <div>
-    encrypted message:
-    <p class="encrypted-msg"></p>
+    <h1>Home</h1>
+    <div class="logo">
+      <img src="../assets/logo.png" alt="logo" />
+    </div>
+    <button @click="state.count++">count is: {{ state.count }}</button>
+    <Foo />
+    <p class="virtual">msg from virtual module: {{ foo.msg }}</p>
+    <p class="inter">this will be styled with a font-face</p>
+    <p class="import-meta-url">{{ state.url }}</p>
+    <p class="protocol">{{ state.protocol }}</p>
+    <p class="nested-virtual">msg from nested virtual module: {{ virtualMsg }}</p>
+    <Button>CommonButton</Button>
+    <div>
+      encrypted message:
+      <p class="encrypted-msg"></p>
+    </div>
+  
+    <ImportType />
   </div>
-
-  <ImportType />
 </template>
 
 <script setup>
@@ -43,9 +45,12 @@ const state = reactive({
 })
 </script>
 
-<style scoped>
-h1,
-a {
+<style lang="scss" scoped>
+h1 {
   color: green;
+}
+.logo {
+  width: min(200px, 50%);
+  margin: 0 auto;
 }
 </style>
