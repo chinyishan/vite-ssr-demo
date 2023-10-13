@@ -43,14 +43,20 @@ const routes = [
     name: 'Product',
     component: () => import('@/pages/Product/index.vue'),
     meta: { title: '商品列表'},
-    children: [
-      {
-        path: ':id',
-        name: 'ProductId',
-        component: () => import('@/pages/Product/id.vue'),
-        meta: { title: '主商品' },
-      },
-    ],
+    // children: [
+    //   {
+    //     path: 'defult/:id',
+    //     name: 'Defult',
+    //     component: () => import('@/pages/Product/defult.vue'),
+    //   },
+    // ],
+  },
+  {
+    path: '/product/defult/:id',
+    name: 'Defult',
+    hidden: true,
+    component: () => import('@/pages/Product/defult.vue'),
+    meta: { title: '主商品' },
   },
 ]
 

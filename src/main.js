@@ -9,9 +9,9 @@ import { createRouter } from './router'
 // fresh store here.
 export function createApp() {
   const app = createSSRApp(App)
-  const pinia = createPinia()
-  app.use(pinia)
   const router = createRouter()
+  const pinia = createPinia()
   app.use(router)
+  app.use(pinia)
   return { app, router }
 }

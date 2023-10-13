@@ -114,7 +114,7 @@ export default defineConfig(({ command, ssrBuild }) => ({
               code:
                 `import { __ssr_vue_processAssetPath } from '${virtualId}';__ssr_vue_processAssetPath;` +
                 code,
-              sourcemap: null, // no sourcemap support to speed up CI
+              sourcemap: null, // 沒有 sourcemap 支援來加速 CI
             }
           }
         },
@@ -135,7 +135,7 @@ export default defineConfig(({ command, ssrBuild }) => ({
   },
   ssr: {
     noExternal: [
-      // this package has uncompiled .vue files
+      // 這個包有未編譯的.vue 文件
       '@vitejs/test-example-external-component',
     ],
   },

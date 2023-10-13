@@ -6,6 +6,7 @@
           <li><router-link to="/">Home</router-link></li>
           <li><router-link to="/about">About</router-link></li>
           <li><router-link to="/product">product</router-link></li>
+          <li><router-link to="/product/defult/2">product222</router-link></li>
         </ul>
       </nav>
     </header>

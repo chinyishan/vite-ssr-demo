@@ -1,19 +1,19 @@
 <template>
   <div>
-    <h1>詳細商品</h1>
+    <h1>詳細商品 {{ $route.params.id }}</h1>
     <section>
       <div class="product_row">
         <div class="product_col pic">
-          <img :src="data.thumbnail" alt="pd" />
+          <img :src="productData.thumbnail" alt="pd" />
         </div>
         <div class="product_col">
           <div class="description txt">
-            <h2 class="title">{{ data.title }}</h2>
-            <h3>brand : {{ data.brand }}</h3>
-            <p>{{ data.description }}</p>
+            <h2 class="title">{{ productData.title }}</h2>
+            <h3>brand : {{ productData.brand }}</h3>
+            <p>{{ productData.description }}</p>
           </div>
           <div class="description price">
-            <strong>${{ data.price }}</strong>
+            <strong>${{ productData.price }}</strong>
           </div>
         </div>
       </div>
@@ -22,23 +22,44 @@
 </template>
 
 <script setup>
+import { ref, onMounted, onServerPrefetch } from 'vue';
 import { useRoute } from "vue-router";
 
 const route = useRoute();
 console.log(route.params.id);
 console.log(route);
 
-// const { data } = await useFetch(
-//   `https://dummyjson.com/products/${route.params.id}`
-// );
+const productData = ref({});
 
-// useSeoMeta({
-//   title: () => `商品-${data.value.title}`,
-//   ogTitle: () => `商品-${data.value.title}`,
-//   description: () => `網頁說明-${data.value.description}`,
-//   ogDescription: () => `網頁說明-${data.value.description}`,
-//   ogImage: () => `${data.value.thumbnail}`,
-// });
+async function fetchProductData() {
+  const response = await fetch(`https://dummyjson.com/products/${route.params.id}`);
+  if (!response.ok) {
+    throw new Error("Failed to fetch product data");
+  }
+  console.log(111);
+  return await response.json();
+}
+
+onMounted(async () => {
+  try {
+    const data = await fetchProductData();
+    console.log(data);
+    productData.value = data;
+  } catch (error) {
+    console.error('Failed to fetch product data:', error);
+  }
+});
+
+onServerPrefetch(async () => {
+  try {
+    const data = await fetchProductData();
+    productData.value = data;
+  } catch (error) {
+    console.error('Failed to fetch product data:', error);
+  }
+});
+// console.log(333);
+
 </script>
 
 <style lang="scss" scoped>
